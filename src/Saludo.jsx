@@ -1,7 +1,7 @@
-function Saludo() {
+function Saludo(props) {
   return (
     <>
-    <h1>Hola, soy asaun componente y soy visible!</h1>
+    <h1>Hola, soy un componente y soy visible! Mi nombre es {props.name}</h1>
     </>
   )
 }
