@@ -1,5 +1,6 @@
 import Saludo from "./Saludo";
 import ListaTareas from "./ListaTareas"
+import Contador from "./Contador";
 
 function App() {
     return (
@@ -7,6 +8,7 @@ function App() {
         <Saludo name = 'Pepito' />
         <Saludo name = 'Juanito' />
         <ListaTareas />
+        <Contador />
         </>
     );
 }
