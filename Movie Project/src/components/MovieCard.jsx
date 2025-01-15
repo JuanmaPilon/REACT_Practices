@@ -1,5 +1,7 @@
-function MovieCard({ movie }) {
+import "../css/MovieCard.css";
 
+
+function MovieCard({ movie }) {
   function handleFavClick() {
     console.log(`Clicked on ${movie.title}`);
   }
