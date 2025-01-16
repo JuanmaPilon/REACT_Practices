@@ -41,13 +41,18 @@ function Home() {
         />
         <button type="submit">🔍</button>
       </form>
-      <div className="movies-grid">
-        {movies.map((movie) =>
-          (searchQuery === "" ||
-            movie.title.toLowerCase().includes(searchQuery.toLowerCase())) &&
-          <MovieCard movie={movie} key={movie.id} />
-        )}
-      </div>
+
+      {error && <div className="error">{error}</div>}
+
+      {loading ? (
+        <div className="loading">Loading...</div>
+      ) : (
+        <div className="movies-grid">
+          {movies.map((movie) => (
+            <MovieCard movie={movie} key={movie.id} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
