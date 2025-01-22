@@ -11,5 +11,5 @@ export const searchMovies = async (query) => {
     `${import.meta.env.VITE_BASE_URL}/search/movie?api_key=${import.meta.env.VITE_API_KEY}&query=${query}`,
   );
   const data = await response.json();
-  return data.res;
+  return data.results;
 };

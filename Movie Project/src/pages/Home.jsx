@@ -23,10 +23,22 @@ function Home() {
     loadPopularMovies();
   }, []);
 
-  const handleSearch = () => {
+  const handleSearch = async (e) => {
     e.preventDefault();
-    alert(searchQuery);
-    setSearchQuery("Type something...");
+    if (!searchQuery.trim()) return;
+    if (loading) return;
+
+      setLoading(true)
+      try {
+        const searchResults = await searchMovies(searchQuery);
+        setMovies(searchResults);
+        setError(null);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+      setSearchQuery("");
   };
 
   return (
@@ -39,7 +51,7 @@ function Home() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <button type="submit">🔍</button>
+        <button type="submit" className="search-button">🔍</button>
       </form>
 
       {error && <div className="error">{error}</div>}
