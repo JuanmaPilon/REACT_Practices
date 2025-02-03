@@ -3,13 +3,32 @@ import Greetings from "./components/Greetings.jsx";
 import Animals from "./components/Animals.jsx";
 
 
-function App() {
+function List(props) {
+  if (!props.animals) {
+    return <div>Loading...</div>;
+  }
+
+  if (props.animals.length === 0) {
+    return <div>There are no animals in the list!</div>;
+  }
+
   return (
-    <>
-      <h1>React Odin Project</h1>
-      <Greetings/>
-      <Animals/>
-    </>
+    <ul>
+      {props.animals.map((animal) => {
+        return <li key={animal}>{animal}</li>;
+      })}
+    </ul>
+  );
+}
+
+function App() {
+  const animals = [];
+
+  return (
+    <div>
+      <h1>Animals: </h1>
+      <List animals={animals} />
+    </div>
   );
 }
 
