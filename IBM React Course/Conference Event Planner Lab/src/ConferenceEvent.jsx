@@ -3,6 +3,40 @@ import "./ConferenceEvent.css";
 import TotalCost from "./TotalCost";
 import { useSelector, useDispatch } from "react-redux";
 import { incrementQuantity, decrementQuantity } from "./venueSlice";
+
+
+const avItems = useSelector((state) => state.av);
+
+const calculateTotalCost = () => {
+  let totalCost = 0;
+  if (section === "venue") {
+    
+  }
+}
+
+{avItems.map((item, index) => (
+  <div className="av_data venue_main" key={index}>
+      <div className="img">
+          <img src={item.img} alt={item.name} />
+      </div>
+  <div className="text"> {item.name} </div>
+  <div> ${item.cost} </div>
+      <div className="addons_btn">
+          <button className="btn-warning" onClick={() => handleDecrementAvQuantity(index)}> &ndash; </button>
+          <span className="quantity-value">{item.quantity}</span>
+          <button className=" btn-success" onClick={() => handleIncrementAvQuantity(index)}> &#43; </button>
+      </div>
+  </div>
+))}
+
+const handleIncrementAvQuantity = (index) => {
+  dispatch(incrementQuantity(index));
+}
+
+const handleDecrementAvQuantity = (index) => {
+  dispatch(incrementQuantity(index));
+}
+
 const ConferenceEvent = () => {
     const [showItems, setShowItems] = useState(false);
     const [numberOfPeople, setNumberOfPeople] = useState(1);
